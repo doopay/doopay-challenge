@@ -2,18 +2,18 @@
 
 ### Avisos antes de começar
 
-- Crie um repositório no seu GitHub.
+- Crie um repositório no seu GitHub, não use o nome "doopay" e nem relacione qualquer parte do teste com o nome.
 - Faça seus commits no seu repositório.
 - Envie o link do seu repositório para o local informado pelo recrutador.
 
-### Requisitos téncino
+### Requisitos técnicos
 
 - Você deve utilizar o framework Fastify em um projeto com Node.JS & TypeScript para implementação deste desafio.
 - Tente evitar usar muito métodos mágicos ou atalhos já prontos, como bibliotecas, boilerplates e trechos de códigos pronto. Sabemos que essas facilidades aumentam a produtividade no dia-a-dia mas aqui queremos ver o seu código e a sua forma de resolver problemas.
 - Valorizamos uma boa estrutura de containeres criada por você.
 
 
-## Objetivo: Transferência entre Contas Simplificada
+## Objetivo: Transferência entre Contas Simplificadas
 Temos 2 tipos de usuários, os comuns e lojistas, ambos têm carteira com dinheiro e realizam transferências entre eles. Vamos nos atentar somente ao fluxo de transferência entre dois usuários.
 
 ### Requisitos:
