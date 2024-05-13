@@ -1,72 +1,55 @@
-Desafio Back-end para Fintech
-Avisos antes de começar
-Crie um repositório no seu GitHub sem citar nada relacionado a empresa;
-Faça seus commits no seu repositório;
-Envie o link do seu repositório para o local informado pelo recrutador;
-Você poderá consultar o Google, Stackoverflow ou algum projeto particular na sua máquina;
-Dê uma olhada em como será a entrevista.
-Sobre o ambiente da aplicação:
-Você deve utilizar o framework Fastify em um projeto com Node.JS & TypeScript para implementação deste desafio.
-Tente evitar usar muito métodos mágicos ou atalhos já prontos, como bibliotecas, boilerplates e trechos de códigos pronto. Sabemos que essas facilidades aumentam a produtividade no dia-a-dia mas aqui queremos ver o seu código e a sua forma de resolver problemas.
-Valorizamos uma boa estrutura de containeres criada por você.
-Para o dia da entrevista técnica
-Na data marcada pelo recrutador tenha sua aplicação rodando na sua máquina local para execução dos testes e para nos mostrar os pontos desenvolvidos e possíveis questionamentos. Faremos um code review junto contigo como se você já fosse do nosso time ❤️, você poderá explicar o que você pensou, como arquitetou e como pode evoluir o projeto.
+README - Desafio Back-end para Fintech
+📌 Avisos Antes de Começar
+Repositório: Crie um repositório no seu GitHub sem mencionar nada relacionado à empresa.
+Commits: Faça seus commits no seu repositório.
+Submissão: Envie o link do seu repositório para o local informado pelo recrutador.
+Consulta: Você poderá consultar o Google, Stackoverflow ou algum projeto particular na sua máquina.
+Entrevista: Dê uma olhada em como será a entrevista.
+🖥️ Sobre o Ambiente da Aplicação
+Tecnologias: Utilize o framework Fastify em um projeto com Node.JS & TypeScript.
+Código: Evite métodos mágicos ou atalhos prontos, como bibliotecas e boilerplates.
+Containerização: Valorizamos uma boa estrutura de containers criada por você.
+📅 Para o Dia da Entrevista Técnica
+Demonstração: Tenha sua aplicação rodando na sua máquina local para execução dos testes e demonstração.
+Code Review: Faremos um code review como se você já fosse parte do nosso time. Explique suas escolhas de arquitetura, implementação e possíveis evoluções do projeto.
+🎯 Objetivo do Desafio
+Transferência entre Contas Simplificada
 
-Objetivo: Transferência entre Contas Simplificada
-Temos 2 tipos de usuários, os comuns e lojistas, ambos têm carteira com dinheiro e realizam transferências entre eles. Vamos nos atentar somente ao fluxo de transferência entre dois usuários.
+Usuários: Dois tipos de usuários - comuns e lojistas. Ambos com carteira e capacidade de realizar transferências.
+Fluxo: Foco no fluxo de transferência entre dois usuários.
+📋 Requisitos
+Dados do Usuário: Nome Completo, CPF, e-mail e Senha. CPF/CNPJ e e-mails devem ser únicos.
+Transferências:
+Usuários podem enviar dinheiro para lojistas e entre usuários.
+Lojistas só recebem transferências, não podem enviar dinheiro.
+Saldo: Validar saldo antes da transferência.
+Autorização: Consultar um serviço autorizador externo antes de finalizar a transferência.
+URL do Mock Autorizador: Mock Authorizer
+Notificação: No recebimento, enviar notificação via e-mail ou SMS.
+URL do Mock Notificador: Mock Notifier
+🧐 Avaliação
+Documentação: Inclua diagramas UML e arquivo OpenAPIv3.
+Código: Foco em código limpo, organizado e padrões de projeto.
+Modelagem de Dados e Manutenibilidade: Estruture bem seu banco de dados e código para fácil manutenção.
+Tratamento de Erros e Segurança: Atenção especial para estes itens.
+Arquitetura: Desacoplamento de componentes e clareza na estrutura.
+🚫 O que NÃO Será Avaliado
+Frontend: Apenas a API Restful será avaliada.
+Autenticação: Não será parte deste desafio.
+✨ Diferenciais
+Docker: Uso de Docker no projeto.
+Testes: Implementação de testes de integração e unitários.
+Design Patterns: Aplicação de padrões de design.
+Documentação Adicional: Qualquer documentação extra que melhore a compreensão do projeto.
+Propostas de Melhoria: Sugestões para evolução da arquitetura.
+Faça uma proposta de payload para as transações:
 
-Requisitos:
-
-Para ambos tipos de usuário, precisamos do Nome Completo, CPF, e-mail e Senha. CPF/CNPJ e e-mails devem ser únicos no sistema. Sendo assim, seu sistema deve permitir apenas um cadastro com o mesmo CPF ou endereço de e-mail;
-Usuários podem enviar dinheiro (efetuar transferência) para lojistas e entre usuários;
-Lojistas só recebem transferências, não enviam dinheiro para ninguém;
-Validar se o usuário tem saldo antes da transferência;
-Antes de finalizar a transferência, deve-se consultar um serviço autorizador externo. Utilize esse mock https://run.mocky.io/v3/687d8d61-5961-4d70-8309-dc672c64c28d para simular a resposta (permita que a URL deste mock seja alterada facilmente, sem edições no codigo-fonte);
-Eventualmente este serviço pode estar indisponível/instável;
-Transações podem ser negadas.
-A operação de transferência deve ser uma transação (ou seja, revertida em qualquer caso de inconsistência) e o dinheiro deve voltar para a carteira do usuário que envia;
-No recebimento de pagamento, o usuário ou lojista precisa receber notificação (envio de email, sms) enviada por um serviço de terceiro. Simule o envio neste mock https://run.mocky.io/v3/5698031f-e0d3-4ee3-a401-1eb9125b1144 (permita que a URL deste mock seja alterada facilmente, sem edições no codigo-fonte);
-Eventualmente este serviço pode estar indisponível/instável;
-Transações podem ser negadas.
-Este serviço deve ser RESTFul.
-Payload
-Faça uma proposta ❤️ de payload, se preferir, temos uma exemplo aqui:
-
+json
+Copiar código
 POST /transaction
-
 {
-    "value": 100.0,
-    "payer": uuid,
-    "payee": uuid
+  "value": 100.0,
+  "payer": "uuid-do-remetente",
+  "payee": "uuid-do-destinatário"
 }
-Avaliação
-Atente-se a cumprir a maioria dos requisitos, pois você pode cumprir-los parcialmente e durante a avaliação vamos bater um papo a respeito do que faltou.
-
-A correção qualitativa será durante a entrevista e levará em conta os seguintes critérios:
-
-O que será avaliado e valorizamos ❤️
-Documentação;
-Foque bastante no desenho de arquitetura com diagramas UML no repositório e um arquivo OpenAPIv3 para a interface da API;
-Código limpo e organizado (nomenclatura, etc);
-Conhecimento de padrões (PSRs, design patterns, SOLID);
-Ser consistente e saber argumentar suas escolhas;
-Apresentar soluções que domina;
-Modelagem de Dados;
-Manutenibilidade do Código;
-Tratamento de erros;
-Cuidado com itens de segurança;
-Arquitetura (estruturar o pensamento antes de escrever);
-Carinho em desacoplar componentes (outras camadas, service, repository).
-De acordo com os critérios acima, iremos avaliar seu teste para avançarmos para a entrevista técnica. Caso não tenha atingido aceitavelmente o que estamos propondo acima, não iremos prosseguir com o processo.
-
-O que NÃO será avaliado ⚠️
-Fluxo de cadastro de usuários e lojistas
-Frontend (só avaliaremos a (API Restful)[https://www.devmedia.com.br/rest-tutorial/28912])
-Autenticação
-O que será um Diferencial
-Uso de Docker;
-Testes de integração;
-Testes unitários;
-Uso de Design Patterns;
-Documentação;
-Proposta de melhoria na arquitetura.
+Boa sorte e estamos ansiosos para ver sua implementação! 🚀
